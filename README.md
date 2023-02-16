@@ -353,18 +353,18 @@ Create a configuration file
     x509_extensions = v3_req
     prompt = no
     [req_distinguished_name]
-    C = AU
-    ST = NSW
-    L = Sydney
-    O = CSIRO
-    OU = Data61
-    CN = ec2-13-212-127-178.ap-southeast-1.compute.amazonaws.com
+    C = xx
+    ST = xxx
+    L = xxx
+    O = xxx
+    OU = xxxx
+    CN = xxxx.ap-southeast-1.compute.amazonaws.com
     [v3_req]
     keyUsage = critical, digitalSignature, keyAgreement
     extendedKeyUsage = serverAuth
     subjectAltName = @alt_names
     [alt_names]
-    DNS.1 = ec2-13-212-127-178.ap-southeast-1.compute.amazonaws.com
+    DNS.1 = xxxxx.ap-southeast-1.compute.amazonaws.com
 
 Generate key file.
 
