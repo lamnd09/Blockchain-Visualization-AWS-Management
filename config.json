@@ -1,0 +1,10 @@
+{
+    "network-configs": {
+        "NAME": {
+            "name": "NAME",
+            "profile": "/path/to/configurationfile",
+            "enableAuthentication": true
+        }
+    },
+    "license": "Apache-2.0"
+}

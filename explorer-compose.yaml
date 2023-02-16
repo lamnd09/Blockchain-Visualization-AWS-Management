@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: Apache-2.0
+version: '2.1'
+
+volumes:
+    pgdata:
+    walletstore:
+
+networks:
+    mynetwork.com:
+        name: cotton-dev
+        external: true
+
+services:
+    explorer.mynetwork.com:
+        image: hyperledger/explorer:latest
+        container_name: explorer.mynetwork.com
+        hostname: explorer.mynetwork.com
+        environment:
+            - DATABASE_HOST=$HOSTNAME
+            - DATABASE_DATABASE=$DATABASENAME
+            - DATABASE_USERNAME=$USER
+            - DATABASE_PASSWD=$PASSWORD
+            - LOG_LEVEL_APP=info
+            - LOG_LEVEL_DB=info
+            - LOG_LEVEL_CONSOLE=debug
+            - LOG_CONSOLE_STDOUT=true
+            - CORE_PEER_TLS_ROOTCERT_FILE=/opt/home/managedblockchain-tls-chain.pem
+            - CORE_PEER_MSPCONFIGPATH=/opt/home/admin-msp
+            - DISCOVERY_AS_LOCALHOST=false
+            - PORT=${PORT:-8443}
+        volumes:
+            - 
+        ports:
+            - ${PORT:-8443}:${PORT:-8443}
+        networks:
+            - mynetwork.com

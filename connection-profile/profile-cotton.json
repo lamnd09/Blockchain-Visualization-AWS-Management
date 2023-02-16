@@ -1,0 +1,89 @@
+{
+    "name": "cotton-dev",
+    "version": "1.0.0",
+    "license": "Apache-2.0",
+    "client": {
+        "tlsEnable": true,
+        "caCredential": {
+            "id": "<Admin>",
+            "password": "<Password>"
+        },
+        "adminCredential": {
+            "id": "<ExplorerAdmin>",
+            "password": "<ExplorerPassword>"
+        },
+        "enableAuthentication": true,
+        "organization": "<MEMBERID>",
+        "channel": "<CHANNEL>",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                },
+                "orderer": "300"
+            }
+        }
+    },
+    "channels": {
+        "preharvest": {
+            "peers": {
+                "<PEERNODEID>": {}
+            }
+        }
+    },
+    "organizations": {
+        "<MEMBERID>": {
+            "mspid": "<MEMBERID>",
+            "peers": ["<PEERNODEID>"],
+            "fullpath": true,
+            "adminPrivateKey": {
+                "path": "/path/to/private/key_sk"
+            },
+            "signedCert": {
+                "path": "/path/to/signed/cert"
+            }
+        }
+    },
+    "peers": {
+        "<PEERNODEID>": {
+            "url": "<PEERSERVICEENDPOINT>",
+            "eventUrl": "PEEREVENTENDPOINT",
+            "tlsCACerts": {
+                "path": "managedblockchain-tls-chain.pem"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "<PEERSERVICEENDPOINTNOPORT>",
+                "discovery-as-localhost": "false"
+            }
+        }
+    },
+    "orderers": {
+        "orderer": {
+            "url": "<ORDERINGSERVICEENDPOINT>",
+            "grpcOptions": {
+                "ssl-target-name-override": "<ORDERINGSERVICEENDPOINTNOPORT>"
+            },
+            "tlsCACerts": {
+                "path": "managedblockchain-tls-chain.pem"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "<CASERVICEID>": {
+            "url": "CASERVICEENDPOINT",
+            "httpOptions": {
+                "verify": true
+            },
+            "tlsCACerts": {
+                "path": "managedblockchain-tls-chain.pem"
+            },
+            "caName": "<CASERVICEID>"
+        },
+        "registrar": {
+            "affiliation": "ComplianceManager",
+            "enrollId": "<CAADMIN>",
+            "enrollSecret": "<CAPASSWORD>",
+            "role": "admin"
+        }
+    }
+}
